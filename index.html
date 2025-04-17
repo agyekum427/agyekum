@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agyekum Michael Isaiah Odame - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #285AEB;
+      --secondary-color: #fdf497;
+      --text-color: #333;
+      --bg-color: white;
+    }
+
+    body.dark-mode {
+      --primary-color: #fdf497;
+      --secondary-color: #285AEB;
+      --text-color: #f0f0f0;
+      --bg-color: #1e1e1e;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: var(--text-color);
+      line-height: 1.6;
+      font-family: 'Segoe UI', sans-serif;
+      transition: all 0.3s ease;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px;
+      background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b') no-repeat center center/cover;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      color: white;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    header * {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px auto;
+      display: block;
+      border: 5px solid var(--bg-color);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .info {
+      background: var(--bg-color);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .info:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: square inside;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      color: var(--text-color);
+      font-size: 1.5em;
+      transition: color 0.3s ease;
+    }
+
+    .socials a:hover {
+      color: var(--primary-color);
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transition: transform 0.3s;
+    }
+
+    .whatsapp-button:hover {
+      transform: scale(1.1);
+    }
+
+    .top-buttons {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-buttons button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--primary-color);
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .top-buttons button:hover {
+      background-color: var(--secondary-color);
+      color: black;
+    }
+
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px; width: 20px;
+      left: 4px; bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--primary-color);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+
+    .flyers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .flyer {
+      width: 300px;
+      background: var(--bg-color);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .flyer:hover {
+      transform: scale(1.03);
+    }
+
+    .flyer img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .flyer p {
+      padding: 10px;
+      color: var(--text-color);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-buttons">
+    <label class="switch">
+      <input type="checkbox" onchange="toggleDarkMode()" id="modeSwitch">
+      <span class="slider"></span>
+    </label>
+    <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">About Me</button>
+    <button onclick="document.getElementById('skills').scrollIntoView({behavior: 'smooth'})">Skills</button>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Info</button>
+  </div>
+
+  <header>
+    <img src="michael.jpeg" alt="Agyekum Michael Isaiah Odame" class="profile-img">
+    <h1>Agyekum Michael Isaiah Odame</h1>
+    <p>Computer Science Student at Kumasi Technical University</p>
+  </header>
+
+  <section class="info" id="about">
+    <h2>About Me</h2>
+    <p>Hi, I’m Agyekum Michael Isaiah Odame, a passionate and curious individual exploring the endless possibilities of computer science. From building websites and solving algorithmic puzzles to understanding how systems work behind the scenes, I love turning ideas into real, functional tech.
+
+        With a background in IT and a strong foundation in programming, I enjoy creating solutions that are both innovative and efficient. I’m always learning, whether it’s a new language, framework, or diving into AI, cybersecurity, or data science.
+        
+        When I’m not coding, you’ll find me sharing tech tips, helping others understand complex concepts in simple ways, or exploring how technology can make everyday life better.
+        
+        I believe in growth, collaboration, and using technology as a tool to shape the future.</p>
+  </section>
+
+  <section class="info" id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>IT Teaching</li>
+      <li>Computer Repair</li>
+      <li>Windows Installation</li>
+      <li>Graphic Design</li>
+      <li>Broadcast Supervisor & Support</li>
+      <li>Website Development</li>
+      <li>Camera Operation</li>
+    </ul>
+  </section>
+
+  <section class="info">
+    <h2>Skill Flyers</h2>
+    <div class="flyers">
+      <div class="flyer">
+        <img src="co.jpeg" alt="IT Teaching">
+        <p>Empowering students with knowledge in Information Technology and Digital Skills.</p>
+      </div>
+      <div class="flyer">
+        <img src="gd.jpeg" alt="Graphic Design">
+        <p>Creative and effective visual designs for branding, events, and promotion.</p>
+      </div>
+      <div class="flyer">
+        <img src="re.jpeg" alt="Computer Repair">
+        <p>Reliable diagnosis and repair of laptops, desktops, and other IT hardware.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="info">
+    <h2>Qualifications</h2>
+    <p>	Senior High School Graduate – Information Technology (IT)
+        Built a strong foundation in computer systems, networking, basic programming, and digital literacy.
+            Proficient in Programming Languages:
+        Python, HTML, CSS, JavaScript
+            Web Development Skills:
+        Able to design and build responsive websites using modern front-end tools and basic back-end logic.
+            Problem-Solving & Logical Thinking:
+        Experience working on real-world IT projects and solving coding challenges.
+            Other self thought Skills:
+        Experience in computer repairs, Graphic designing, Camera Operating, Broadcast Supervisor & Support and an IT Tutor.
+            Continuous Learner:
+        Currently learning advanced concepts in computer science, including data structures, algorithms, and cybersecurity. Pursuing a Bachelor's Degree in Computer Science at Kumasi Technical University.</p>
+  </section>
+
+  <section class="info" id="contact">
+    <h2>Contact Information</h2>
+    <p><strong>Name:</strong> Agyekum Michael Isaiah Odame</p>
+    <p><strong>Email:</strong> agyekumyaw427@gmail.com</p>
+    <p><strong>Phone:</strong> +233530607406</p>
+    <p><strong>Location:</strong> Kumasi, Ghana</p>
+  </section>
+
+  <section class="info">
+    <h2>Download CV</h2>
+    <p><a href="cv_michael.docx" target="_blank">Click here to view/download my CV</a></p>
+  </section>
+
+  <section class="info socials">
+    <h2>Connect With Me</h2>
+    <a href="https://www.facebook.com/share/1Bj3ozJTiL/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://x.com/michealagy427?s=21" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/michael-isaiah-odame-agyekum-6a616a247?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/officialtraveller.427?igsh=MWxoYnM1bGMxNTU2cQ%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+  </section>
+
+  <a href="https://wa.me/233530607406?text=Hello%20Agyekum!%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect." class="whatsapp-button" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const switchEl = document.getElementById('modeSwitch');
+      switchEl.checked = document.body.classList.contains('dark-mode');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('modeSwitch').checked = document.body.classList.contains('dark-mode');
+    });
+  </script>
+</body>
+
+</html>
